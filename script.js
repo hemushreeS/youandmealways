@@ -23,15 +23,20 @@ const noBtn = document.getElementById("noBtn");
 const popup = document.getElementById("popup");
 const closePopup = document.getElementById("closePopup");
 const buttonArea = document.querySelector(".final-buttons");
+const bgMusic = document.getElementById("bgMusic");
 
 // YES → show popup
 yesBtn.addEventListener("click", () => {
   popup.style.display = "flex";
+  bgMusic.currentTime = 0;   // start from beginning
+  bgMusic.play();
 });
 
 // Close popup
 closePopup.addEventListener("click", () => {
   popup.style.display = "none";
+  bgMusic.pause();
+  bgMusic.currentTime = 0;   // reset
 });
 
 const noMessage = document.getElementById("noMessage");
@@ -73,3 +78,4 @@ function moveNoButton() {
 // Desktop + mobile support
 noBtn.addEventListener("mouseenter", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
+
